@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import br.com.hvc.workmongodb.domain.Post;
 import br.com.hvc.workmongodb.domain.User;
+import br.com.hvc.workmongodb.dto.AuthorDTO;
 import br.com.hvc.workmongodb.repository.PostRepository;
 import br.com.hvc.workmongodb.repository.UserRepository;
 
@@ -37,8 +38,8 @@ public class Instantiation implements CommandLineRunner {
 		userRep.saveAll(Arrays.asList(u1, u2, u3, u4, u5));
 		
 		postRep.deleteAll();
-		Post p1 = new Post(null, sdf.parse("21/03/2019"), "Partiu viagem", "Vou viajar para Campinas. Abaços!", u1);
-		Post p2 = new Post(null, sdf.parse("25/03/2019"), "Bom dia", "Acordei feliz hoje!", u1);
+		Post p1 = new Post(null, sdf.parse("21/03/2019"), "Partiu viagem", "Vou viajar para Campinas. Abaços!", new AuthorDTO(u1));
+		Post p2 = new Post(null, sdf.parse("25/03/2019"), "Bom dia", "Acordei feliz hoje!", new AuthorDTO(u1));
 		postRep.saveAll(Arrays.asList(p1, p2));
 	}
 }
