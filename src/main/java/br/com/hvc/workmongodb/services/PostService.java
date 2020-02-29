@@ -1,5 +1,6 @@
 package br.com.hvc.workmongodb.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,9 @@ public class PostService {
 	public Post  findById(String id) {
 		Optional<Post> p = rep.findById(id);
 		return p.orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado!"));
+	}
+	
+	public List<Post> findByTitle(String text) {
+		return rep.findByTitleContainingIgnoreCase(text);
 	}
 }
